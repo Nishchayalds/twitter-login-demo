@@ -1,12 +1,13 @@
 "use client";
-import { signIn, signOut, useSession } from "next-auth/react";
-import React, { useEffect } from "react";
+import { signIn } from "next-auth/react";
+import React from "react";
 import { LoginButton } from "@telegram-auth/react";
+
 export default function TelegramComponent({
   botUsername,
   tokenData,
   token,
-}: any) { 
+}: any) {
   return (
     <div className="text-sm text-center">
       {tokenData?.telegram_id ? (
@@ -17,6 +18,8 @@ export default function TelegramComponent({
         <LoginButton
           botUsername={botUsername}
           onAuthCallback={(data) => {
+            console.log("✅ Telegram login callback data:", data);
+
             signIn(
               "telegram-login",
               {
@@ -25,7 +28,11 @@ export default function TelegramComponent({
                 callbackUrl: "/",
               },
               data as any
-            );
+            ).then((res) => {
+              console.log("✅ signIn response:", res);
+            }).catch((err) => {
+              console.error("❌ signIn error:", err);
+            });
           }}
         />
       )}
