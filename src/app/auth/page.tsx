@@ -13,7 +13,7 @@ export default function TelegramLoginPage() {
       </h1>
 
       <LoginButton
-        botUsername="Enseiquestbot" // Change this to your bot username
+        botUsername="aldstest_bot" // Change this to your bot username
         onAuthCallback={(data) => {
             try {
               console.log("Telegram login successful!");
