@@ -19,20 +19,6 @@ export default function TelegramComponent({
           botUsername={botUsername}
           onAuthCallback={(data) => {
             console.log("✅ Telegram login callback data:", data);
-
-            signIn(
-              "telegram-login",
-              {
-                username: tokenData?.id,
-                token: token,
-                callbackUrl: "/",
-              },
-              data as any
-            ).then((res) => {
-              console.log("✅ signIn response:", res);
-            }).catch((err) => {
-              console.error("❌ signIn error:", err);
-            });
           }}
         />
       )}
