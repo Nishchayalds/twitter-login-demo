@@ -1,14 +1,30 @@
-import SigninComponent from "@/components/ui/authentication/signin";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+'use client';
 
-export default function Page() {
-  const cookieStore = cookies();
-//   const userData = cookieStore.get("userData");
+import { LoginButton } from "@telegram-auth/react";
+import { useState } from "react";
 
-//   if (userData) {
-//     redirect("/");
-//   }
+export default function TelegramLoginPage() {
+  
 
-  return <SigninComponent />;
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
+      <h1 className="text-2xl font-semibold text-gray-800 mb-6">
+        Login with Telegram
+      </h1>
+
+      <LoginButton
+        botUsername="Enseiquestbot" // Change this to your bot username
+        onAuthCallback={(data) => {
+            try {
+              console.log("Telegram login successful!");
+              console.log("User data received:", data);
+            } catch (error) {
+              console.error("Error handling Telegram login data:", error);
+            }
+          }}
+      />
+
+      
+    </div>
+  );
 }
