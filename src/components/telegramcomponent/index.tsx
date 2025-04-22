@@ -22,7 +22,7 @@ export default function TelegramComponent({
               {
                 username: tokenData?.id,
                 token: token,
-                callbackUrl: "/dashboard",
+                callbackUrl: "/",
               },
               data as any
             );

@@ -29,7 +29,7 @@ export default function SigninComponent() {
           <div className="text-white bg-red-700">
 
           <TelegramComponent
-                            botUsername={`Enseiquestbot`}
+                            botUsername={`aldstest_bot`}
                             tokenData={"tokenData"}
                             token={"token"}
                           />
