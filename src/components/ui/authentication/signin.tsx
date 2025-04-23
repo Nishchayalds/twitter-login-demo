@@ -3,14 +3,11 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { LoginButton } from "@telegram-auth/react";
 
 export default function SigninComponent() {
   const handleTwitterLogin = async () => {
     await signIn("twitter").catch((err: any) => console.log(err, "err"));
-  };
-
-  const handleTelegramLogin = () => {
-    window.open("https://t.me/aldstest_bot?start=login", "_blank");
   };
 
   return (
@@ -38,18 +35,23 @@ export default function SigninComponent() {
             </div>
           </div>
 
-          {/* Custom Telegram Button */}
+          {/* Styled Telegram LoginButton */}
           <div className="w-full px-6 pb-6">
             <div
-              className="cursor-pointer rounded-xl w-full bg-modalColor flex justify-between items-center px-4 py-5"
-              onClick={handleTelegramLogin}
+              className="rounded-xl w-full bg-modalColor flex justify-between items-center px-4 py-5"
             >
               <p className="text-[15px] font-semibold">Telegram</p>
-              <Image
-                src={require("../../../../public/backgroud/telegram.png")}
-                alt="telegram.png"
-                className="w-8"
-              />
+
+              {/* Styled container to make the iframe behave like a button */}
+              <div className="w-[130px] h-[40px] overflow-hidden rounded-md">
+                <LoginButton
+                  botUsername="aldstest_bot"
+                  onAuthCallback={(data) => {
+                    console.log("Telegram login successful!");
+                    console.log("User data received:", data);
+                  }}
+                />
+              </div>
             </div>
           </div>
 
