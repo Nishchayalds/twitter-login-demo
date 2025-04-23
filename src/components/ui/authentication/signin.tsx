@@ -3,43 +3,23 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import { LoginButton } from "@telegram-auth/react";
 
 export default function SigninComponent() {
-  const telegramButtonRef = useRef<HTMLDivElement>(null);
-
   const handleTwitterLogin = async () => {
     await signIn("twitter").catch((err: any) => console.log(err, "err"));
   };
 
-  const triggerTelegramLogin = () => {
-    if (typeof window === "undefined") {
-      // This is the server – don't try to access DOM
-      return;
-    }
-  
-    try {
-      const iframe = telegramButtonRef.current?.querySelector("iframe");
-      const button = iframe?.contentWindow?.document?.querySelector("button") as HTMLButtonElement;
-  
-      if (button) {
-        button.click();
-      } else {
-        console.warn("Telegram login button not ready yet.");
-      }
-    } catch (error) {
-      console.error("Unable to trigger Telegram login:", error);
-    }
+  const handleTelegramLogin = () => {
+    window.open("https://t.me/aldstest_bot?start=login", "_blank");
   };
 
   return (
-    <div className="h-screen relative flex flex-col items-center justify-center md:bg-tree md:bg-center md:bg-contain md:bg-no-repeat ">
+    <div className="h-screen relative flex flex-col items-center justify-center md:bg-tree md:bg-center md:bg-contain md:bg-no-repeat">
       <div className="z-50 w-full unbounded flex justify-center items-center">
         <div className="bg-[#0000004d] border border-white border-opacity-[10%] rounded-xl flex flex-col justify-around items-center">
           <div className="px-24 md:px-36 py-12">
             <p className="text-sm md:text-[18px] font-medium">
-              Sign in with Twitter
+              Sign in with Twitter or Telegram
             </p>
           </div>
 
@@ -58,28 +38,17 @@ export default function SigninComponent() {
             </div>
           </div>
 
-          {/* Telegram Button */}
+          {/* Custom Telegram Button */}
           <div className="w-full px-6 pb-6">
             <div
               className="cursor-pointer rounded-xl w-full bg-modalColor flex justify-between items-center px-4 py-5"
-              onClick={triggerTelegramLogin}
+              onClick={handleTelegramLogin}
             >
               <p className="text-[15px] font-semibold">Telegram</p>
               <Image
-                src={require("../../../../public/backgroud/telegram.png")}
+                src={require("../../../../public/backgroud/telegram-icon.png")}
                 alt="telegram.png"
                 className="w-8"
-              />
-            </div>
-
-            {/* Hidden Telegram Login Button */}
-            <div className="hidden" ref={telegramButtonRef}>
-              <LoginButton
-                botUsername="aldstest_bot"
-                onAuthCallback={(data) => {
-                  console.log("Telegram login successful!");
-                  console.log("User data received:", data);
-                }}
               />
             </div>
           </div>
@@ -105,7 +74,7 @@ export default function SigninComponent() {
         </div>
       </div>
 
-      {/* Shadow image */}
+      {/* Decorative Shadow */}
       <div className="md:hidden -z-0 absolute bottom-0 w-full flex justify-center items-center opacity-75">
         <Image
           src={require("../../../../public/backgroud/PopUp Shadow Green.png")}
