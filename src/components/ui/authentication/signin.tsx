@@ -46,7 +46,7 @@ export default function SigninComponent() {
             >
               <p className="text-[15px] font-semibold">Telegram</p>
               <Image
-                src={require("../../../../public/backgroud/telegram-icon.png")}
+                src={require("../../../../public/backgroud/telegram.png")}
                 alt="telegram.png"
                 className="w-8"
               />
