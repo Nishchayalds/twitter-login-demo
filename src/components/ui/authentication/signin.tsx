@@ -35,24 +35,19 @@ export default function SigninComponent() {
             </div>
           </div>
 
-          {/* Telegram Button (Styled Wrapper) */}
-          <div className="w-full px-6 pb-6">
-            <div className="rounded-xl w-full bg-modalColor flex justify-between items-center px-4 py-5">
-              <p className="text-[15px] font-semibold">Telegram</p>
-
-              {/* Telegram Auth Button Styled */}
-              <div className="w-[130px] h-[40px] overflow-hidden rounded-md">
-                <LoginButton
-                  botUsername="Enseiquestbot"
-                  buttonSize="large"
-                  cornerRadius={8}
-                  requestAccess="write"
-                  onAuthCallback={(data) => {
-                    console.log("✅ Telegram login successful!");
-                    console.log("Received data:", data);
-                  }}
-                />
-              </div>
+          {/* Telegram Button (Centered) */}
+          <div className="w-full px-6 pb-6 flex justify-center">
+            <div className="overflow-hidden rounded-md">
+              <LoginButton
+                botUsername="Enseiquestbot"
+                buttonSize="large"
+                cornerRadius={8}
+                requestAccess="write"
+                onAuthCallback={(data) => {
+                  console.log("✅ Telegram login successful!");
+                  console.log("Received data:", data);
+                }}
+              />
             </div>
           </div>
 
