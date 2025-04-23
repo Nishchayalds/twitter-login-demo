@@ -14,13 +14,22 @@ export default function SigninComponent() {
   };
 
   const triggerTelegramLogin = () => {
-    const button = telegramButtonRef.current?.querySelector("iframe")?.contentWindow?.document
-      .querySelector("button") as HTMLButtonElement;
-    
-    if (button) {
-      button.click();
-    } else {
-      console.warn("Telegram login button not ready yet.");
+    if (typeof window === "undefined") {
+      // This is the server – don't try to access DOM
+      return;
+    }
+  
+    try {
+      const iframe = telegramButtonRef.current?.querySelector("iframe");
+      const button = iframe?.contentWindow?.document?.querySelector("button") as HTMLButtonElement;
+  
+      if (button) {
+        button.click();
+      } else {
+        console.warn("Telegram login button not ready yet.");
+      }
+    } catch (error) {
+      console.error("Unable to trigger Telegram login:", error);
     }
   };
 
