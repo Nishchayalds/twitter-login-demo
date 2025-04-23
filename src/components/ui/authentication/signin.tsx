@@ -39,7 +39,7 @@ export default function SigninComponent() {
           <div className="w-full px-6 pb-6 flex justify-center">
             <div className="overflow-hidden rounded-md">
               <LoginButton
-                botUsername="Enseiquestbot"
+                botUsername="aldstest_bot"
                 buttonSize="large"
                 cornerRadius={8}
                 requestAccess="write"
