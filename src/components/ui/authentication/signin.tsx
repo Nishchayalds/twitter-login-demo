@@ -12,7 +12,7 @@ export default function SigninComponent() {
 
   return (
     <div className="h-screen relative flex flex-col items-center justify-center md:bg-tree md:bg-center md:bg-contain md:bg-no-repeat">
-      <div className="z-50 w-full flex justify-center items-center">
+      <div className="z-50 w-full unbounded flex justify-center items-center">
         <div className="bg-[#0000004d] border border-white border-opacity-[10%] rounded-xl flex flex-col justify-around items-center">
           <div className="px-24 md:px-36 py-12">
             <p className="text-sm md:text-[18px] font-medium">
