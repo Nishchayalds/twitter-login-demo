@@ -36,7 +36,10 @@ export default function SigninComponent() {
           </div>
 
           {/* Telegram Button (Centered) */}
-          <div className="w-full px-6 pb-6 flex justify-center">
+          <div className="w-full px-6 pb-4 flex flex-row justify-center items-center">
+          <div className=" flex jusitfy-center overflow-hidden rounded-md w-full font-bold">
+            Telegram login
+          </div>
             <div className="overflow-hidden rounded-md">
               <LoginButton
                 botUsername="aldstest_bot"
